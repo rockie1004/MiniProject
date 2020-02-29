@@ -23,6 +23,7 @@ public class addBookServlet extends HttpServlet {
      * Default constructor. 
      */
     public addBookServlet() {
+    	super();
     }
 
 

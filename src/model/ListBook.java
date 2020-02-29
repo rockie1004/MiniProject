@@ -1,5 +1,7 @@
 package model;
 
+import java.time.LocalDate;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,14 +19,15 @@ public class ListBook {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID")
-	
-private int id;
+	@Column(name="ID")	
+	private int id;
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER) 
- 	@JoinColumn(name="author_id")
+ 	@JoinColumn(name="AUTHOR_ID")
 	private ListAuthor author;
-@Column(name="title")
-private String title;
+	@Column(name="TITLE")
+	private String title;
+	@Column(name="LAST_READ")
+	private LocalDate lastRead;
 
 public ListBook() {}
 
@@ -74,6 +77,21 @@ public String getTitle() {
 public void setTitle(String title) {
 	this.title = title;
 }
+
+/**
+ * @return the lastRead
+ */
+public LocalDate getLastRead() {
+	return lastRead;
+}
+
+/**
+ * @param lastRead the lastRead to set
+ */
+public void setLastRead(LocalDate lastRead) {
+	this.lastRead = lastRead;
+}
+
 
 public String toString() {
 	return title + " by " + author.getAuthorName();

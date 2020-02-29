@@ -13,15 +13,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name="author")
 public class ListAuthor {
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@Column(name="AUTHOR_ID")
-private int id;
-	
-@Column(name="AUTHOR_NAME")
-private String authorName;
+	private int id;
+	@Column(name="AUTHOR_NAME")
+	private String authorName;
 
 public ListAuthor() {}
 /**

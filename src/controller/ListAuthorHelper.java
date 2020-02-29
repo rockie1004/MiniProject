@@ -29,40 +29,40 @@ public void insertAuthor(ListAuthor li) {
 	}
 };
 
-public	List<ListAuthor>	showAllAuthors(){
-EntityManager	em	=	emfactory.createEntityManager();
-@SuppressWarnings("unchecked")
-List<ListAuthor>	allAuthors	=	em.createQuery("SELECT i FROM ListAuthor i").getResultList();
-return	allAuthors;
-}
+public List<ListAuthor> showAllAuthors(){
+	EntityManager em = emfactory.createEntityManager();
+	@SuppressWarnings("unchecked")
+	List<ListAuthor> allAuthors	= em.createQuery("SELECT i FROM ListAuthor i").getResultList();
+	return allAuthors;
+	}
 
 public	void	deleteAuthor(ListAuthor	toDelete)	{
-EntityManager	em	=	emfactory.createEntityManager();
-em.getTransaction().begin();
-TypedQuery<ListAuthor>	typedQuery	= em.createQuery("select li	from ListAuthor	li	where li.authorName	=	:selectedAuthorName",	ListAuthor.class);
-
-//Substitute	parameter	with	actual	data	from	the	toDelete	Author
-typedQuery.setParameter("selectedAuthorName",	toDelete.getAuthorName());
-
-//we	only	want	one	result
-typedQuery.setMaxResults(1);
-
-//get	the	result	and	save	it	into	a	new	listAuthor
-//ADDED check if any result
-
-try 
-	{
-	ListAuthor	result	=	typedQuery.getSingleResult();
-
-	//remove	it
-	em.remove(result);
-	em.getTransaction().commit();
-	em.close();
-	}
-catch (NoResultException none) 
-	{
-	System.out.println("No matching entry was found.");
-	return;
+	EntityManager	em	=	emfactory.createEntityManager();
+	em.getTransaction().begin();
+	TypedQuery<ListAuthor>	typedQuery	= em.createQuery("select li	from ListAuthor	li	where li.authorName	=	:selectedAuthorName",	ListAuthor.class);
+	
+	//Substitute	parameter	with	actual	data	from	the	toDelete	Author
+	typedQuery.setParameter("selectedAuthorName",	toDelete.getAuthorName());
+	
+	//we	only	want	one	result
+	typedQuery.setMaxResults(1);
+	
+	//get	the	result	and	save	it	into	a	new	listAuthor
+	//ADDED check if any result
+	
+	try 
+		{
+		ListAuthor	result	=	typedQuery.getSingleResult();
+	
+		//remove	it
+		em.remove(result);
+		em.getTransaction().commit();
+		em.close();
+		}
+	catch (NoResultException none) 
+		{
+		System.out.println("No matching entry was found.");
+		return;
 }
 
 }

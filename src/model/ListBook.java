@@ -14,96 +14,97 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="book")
+@Table(name = "book")
 public class ListBook {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="BOOK_ID")	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "BOOK_ID")
 	private int id;
-	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER) 
- 	@JoinColumn(name="AUTHOR_ID")
+	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+	@JoinColumn(name = "AUTHOR_ID")
 	private ListAuthor author;
-	@Column(name="TITLE")
+	@Column(name = "TITLE")
 	private String title;
-	@Column(name="LAST_READ")
+	@Column(name = "LAST_READ")
 	private LocalDate lastRead;
 
-public ListBook() {}
+	public ListBook() {
+	}
 
+	/**
+	 * @param author
+	 * @param title
+	 */
+	public ListBook(ListAuthor author, String title, LocalDate lastRead) {
+		this.author = author;
+		this.title = title;
+		this.lastRead = lastRead;
+	}
 
-/**
- * @param author
- * @param title
- */
-public ListBook(ListAuthor author, String title, LocalDate lastRead) {
-	this.author = author;
-	this.title = title;
-	this.lastRead = lastRead;
-}
+	public ListBook(ListAuthor author, String title) {
+		this.author = author;
+		this.title = title;
+	}
 
-public ListBook(ListAuthor author, String title) {
-	this.author = author;
-	this.title = title;
-}
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
 
-/**
- * @return the id
- */
-public int getId() {
-	return id;
-}
-/**
- * @param id the id to set
- */
-public void setId(int id) {
-	this.id = id;
-}
-/**
- * @return the author
- */
-public ListAuthor getAuthor() {
-	return author;
-}
-/**
- * @param author the author to set
- */
-public void setAuthor(ListAuthor author) {
-	this.author = author;
-}
-/**
- * @return the title
- */
-public String getTitle() {
-	return title;
-}
-/**
- * @param title the title to set
- */
-public void setTitle(String title) {
-	this.title = title;
-}
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
 
-/**
- * @return the lastRead
- */
-public LocalDate getLastRead() {
-	return lastRead;
-}
+	/**
+	 * @return the author
+	 */
+	public ListAuthor getAuthor() {
+		return author;
+	}
 
-/**
- * @param lastRead the lastRead to set
- */
-public void setLastRead(LocalDate lastRead) {
-	this.lastRead = lastRead;
-}
+	/**
+	 * @param author the author to set
+	 */
+	public void setAuthor(ListAuthor author) {
+		this.author = author;
+	}
 
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
 
-public String toString() {
-	return title + " by " + author.getAuthorName() + " Last Read: " + lastRead;
-}
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
+	/**
+	 * @return the lastRead
+	 */
+	public LocalDate getLastRead() {
+		return lastRead;
+	}
 
+	/**
+	 * @param lastRead the lastRead to set
+	 */
+	public void setLastRead(LocalDate lastRead) {
+		this.lastRead = lastRead;
+	}
 
+	public String toString() {
+		return title + " by " + author.getAuthorName() + " Last Read: " + lastRead;
+	}
 
 }

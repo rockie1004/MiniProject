@@ -50,15 +50,16 @@ public class addBookServlet extends HttpServlet {
 		System.out.println("title" + title + " authorEntered " + authorEntered);
 		ListAuthorHelper arthelper = new ListAuthorHelper();
 		List<ListAuthor> matchAuthors = arthelper.searchForAuthorByName(authorEntered);
-		if (matchAuthors.isEmpty()) {// if no match, add new author to the database then get that entry from the
-										// database so we know the id.
+		// if no match, add new author to the database then get that entry from the
+		// database so we know the id.
+		if (matchAuthors.isEmpty()) {
 			ListAuthor selectedAuthor = new ListAuthor();
 			selectedAuthor.setAuthorName(authorEntered);
 			arthelper.insertAuthor(selectedAuthor);
 			matchAuthors = arthelper.searchForAuthorByName(authorEntered);
 		}
 		ListAuthor updatedAuthor = matchAuthors.get(0);
-		//
+
 		ListBook li = new ListBook(updatedAuthor, title, lastRead);
 		ListBookHelper dao = new ListBookHelper();
 		dao.insertBook(li);

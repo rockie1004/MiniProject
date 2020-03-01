@@ -25,7 +25,7 @@ td
 
 <td>${currentitem.title}</td>
 <td>${currentitem.author}</td>
-<tr><td colspan="3">Last Read Date: ${currentlist.lastRead}</td></tr>
+<tr><td colspan="3">Last Read Date: ${currentitem.lastRead}</td>
 
 </tr>
 </c:forEach>

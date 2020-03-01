@@ -46,7 +46,7 @@ public class bookNavigationServlet extends HttpServlet {
 		String path = "/viewAllBooksServlet";
 		boolean test = true;
 				
-		if(act.equals("delete")) {
+		if(act.equals("Delete")) {
 			try {
 				if(test) {System.out.println("start delete");}
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
@@ -57,7 +57,7 @@ public class bookNavigationServlet extends HttpServlet {
 		}
 			
 			}
-		else if	(act.equals("edit")) {
+		else if	(act.equals("Edit")) {
 			try {
 				if(test) {System.out.println("start edit");}
 
@@ -71,7 +71,7 @@ public class bookNavigationServlet extends HttpServlet {
 			
 			
 		}
-		else if (act.equals("add")) {
+		else if (act.equals("Add")) {
 			if(test) {System.out.println("start add");}
 		path = "/index.html";
 		}

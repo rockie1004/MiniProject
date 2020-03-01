@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Add Book</title>
-
-</head>
-<h1>Add A Book</h1>
+	<head>
+	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="style.css">
+		<title>Add Book</title>
+	</head>
 
 <body>
+<h1>Add A Book</h1>
 <form action = "addBookServlet" method="post"> 
 
-Book Title: <input type = "text" name = "title"> 
-Author: <input type ="text" name = "author"> 
-Last Read Date: <input type ="text" name = "month" placeholder="mm" size="4">
-				<input type ="text" name = "day" placeholder="dd" size="4">
-				<input type ="text" name = "year" placeholder="yyyy" size="4">
+Book Title: <br />
+<input type = "text" name = "title"> <br />
+Author: <br />
+<input type ="text" name = "author"> <br />
+Last Read Date: 
+<br />
+<input type ="text" name = "month" placeholder="mm" size="4">
+<input type ="text" name = "day" placeholder="dd" size="4">
+<input type ="text" name = "year" placeholder="yyyy" size="4">
 
 <input type = "submit" value="Add Book"> 
 </form> <br /> 

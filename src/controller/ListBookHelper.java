@@ -11,10 +11,10 @@ import javax.persistence.TypedQuery;
 import model.ListBook;
 
 public class ListBookHelper {
-	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("persistfile");
+	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("MiniProject");
 	
 	public void insertBook(ListBook li) {
-		EntityManager em=emfactory.createEntityManager();
+		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(li);
 		em.getTransaction().commit();
@@ -60,11 +60,11 @@ public class ListBookHelper {
 	
 	}
 	public ListBook searchForBookById(int idToEdit) {
-		EntityManager	em	=	emfactory.createEntityManager();
+		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		ListBook	found	=	em.find(ListBook.class,	idToEdit);
+		ListBook found = em.find(ListBook.class, idToEdit);
 		em.close();
-		return	found;	
+		return found;
 	}
 	public void updateBook(ListBook toEdit) {
 		EntityManager	em	=	emfactory.createEntityManager();
@@ -75,13 +75,14 @@ public class ListBookHelper {
 	}
 	
 	public List<ListBook> searchForBookByTitle(String title) {
-		EntityManager em	=	emfactory.createEntityManager();
+		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<ListBook>	typedQuery	=	em.createQuery("select	li	from ListBook	li	where	li.title	=	:selectedTitle",	ListBook.class);
-		typedQuery.setParameter("selectedTitle",	title);
-		List<ListBook>	foundBooks	=	typedQuery.getResultList();
+		TypedQuery<ListBook>typedQuery = em.createQuery("select li from ListBook li where li.title = :selectedTitle", ListBook.class);
+		typedQuery.setParameter("selectedTitle", title);
+		
+		List<ListBook>foundBooks = typedQuery.getResultList();
 		em.close();
-		return	foundBooks;
+		return foundBooks;
 	}
 	
 	public	void	cleanUp(){

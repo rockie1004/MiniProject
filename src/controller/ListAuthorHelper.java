@@ -11,7 +11,7 @@ import javax.persistence.TypedQuery;
 import model.ListAuthor;
 
 public class ListAuthorHelper {
-	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("persistfile");
+	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("MiniProject");
 
 	public void insertAuthor(ListAuthor li) {
 		//

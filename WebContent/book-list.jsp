@@ -16,14 +16,17 @@ td
 <body>
 <a href = "viewAllAuthorsServlet">Go to author list</a><br />
 
-<form method ="post" action ="navigationServlet">
+
+<form method ="post" action ="bookNavigationServlet">
 <table>
 <c:forEach items="${requestScope.allBooks}" var="currentitem">
 <tr>
 <td><input type="radio" name ="id" value="${currentitem.id}"></td>
-<td>${currentitem.author}</td>
+
 <td>${currentitem.title}</td>
-<td>${currentitem.lastRead}</td>
+<td>${currentitem.author}</td>
+<tr><td colspan="3">Last Read Date: ${currentlist.lastRead}</td></tr>
+
 </tr>
 </c:forEach>
 </table>

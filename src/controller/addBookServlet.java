@@ -37,11 +37,11 @@ public class addBookServlet extends HttpServlet {
 		String month = request.getParameter("month");
 		String day = request.getParameter("day");
 		String year = request.getParameter("year");
-		LocalDate readDate;
+		LocalDate lastRead;
 		try {
-			readDate = LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
+			lastRead = LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
 		} catch (NumberFormatException ex) {
-			readDate = LocalDate.now();
+			lastRead = LocalDate.now();
 		}
 		
 		//author
@@ -57,7 +57,7 @@ public class addBookServlet extends HttpServlet {
 		}
 		ListAuthor updatedAuthor = matchAuthors.get(0);
 		//
-		ListBook li = new ListBook(updatedAuthor, title);
+		ListBook li = new ListBook(updatedAuthor, title, lastRead);
 		ListBookHelper dao = new ListBookHelper();
 		dao.insertBook(li);
 		

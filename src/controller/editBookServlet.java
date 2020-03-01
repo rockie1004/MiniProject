@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -44,6 +45,15 @@ public class editBookServlet extends HttpServlet {
 		ListBookHelper dao = new ListBookHelper();
 		String updatedTitle = request.getParameter("title"); 
 		Integer tempId=Integer.parseInt(request.getParameter("id"));
+		String month = request.getParameter("month");
+		String day = request.getParameter("day");
+		String year = request.getParameter("year");
+		LocalDate updatedDate;
+		try {
+			updatedDate = LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
+		} catch (NumberFormatException ex) {
+			updatedDate = LocalDate.now();
+		}
 		ListBook bookToUpdate = dao.searchForBookById(tempId);
 
 		ListAuthorHelper arthelper = new ListAuthorHelper();
@@ -58,6 +68,7 @@ public class editBookServlet extends HttpServlet {
 		ListAuthor updatedAuthor = matchAuthors.get(0);
 		bookToUpdate.setTitle(updatedTitle);
 		bookToUpdate.setAuthor(updatedAuthor);
+		bookToUpdate.setLastRead(updatedDate);
 		
 		dao.updateBook(bookToUpdate);
 		

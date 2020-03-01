@@ -19,7 +19,7 @@ public class ListBook {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID")	
+	@Column(name="BOOK_ID")	
 	private int id;
 	@ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER) 
  	@JoinColumn(name="AUTHOR_ID")
@@ -36,6 +36,12 @@ public ListBook() {}
  * @param author
  * @param title
  */
+public ListBook(ListAuthor author, String title, LocalDate lastRead) {
+	this.author = author;
+	this.title = title;
+	this.lastRead = lastRead;
+}
+
 public ListBook(ListAuthor author, String title) {
 	this.author = author;
 	this.title = title;
@@ -94,7 +100,7 @@ public void setLastRead(LocalDate lastRead) {
 
 
 public String toString() {
-	return title + " by " + author.getAuthorName();
+	return title + " by " + author.getAuthorName() + " Last Read: " + lastRead;
 }
 
 

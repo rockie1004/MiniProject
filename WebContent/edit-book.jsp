@@ -17,6 +17,9 @@ td
 <form action ="editBookServlet" method="post">
 Author: <input type ="text" name ="author" value="${bookToEdit.author}">
 Book Title: <input type ="text" name ="title" value="${bookToEdit.title}">
+Last Read Date: <input type ="text" name = "month" placeholder="mm" size="4">
+				<input type ="text" name = "day" placeholder="dd" size="4">
+				<input type ="text" name = "year" placeholder="yyyy" size="4">
 <input type ="hidden" name ="id" value="${bookToEdit.id}">
 <input type = "submit" value= "Save Edited Book">
 </form>
